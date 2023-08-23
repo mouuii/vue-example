@@ -23,13 +23,14 @@
 
 
 <script setup> import { ref,computed } from "vue";
- let title = ref(""); 
- let todos = ref([{title:'学习Vue',done:false}]) 
+let title = ref(""); 
+let todos = ref([{title:'学习Vue',done:false}]) 
 function addTodo() { todos.value.push({title:title}) }
 function clear() { todos.value = todos.value.filter((v) => !v.done); }
 let active = computed(() => { return todos.value.filter((v) => !v.done).length; });
- let all = computed(() => todos.value.length); 
- let allDone = computed({ get: function () { return active.value === 0; },set: function (value) { todos.value.forEach((todo) => { todo.done = value; });
-
-424344 }, }); </script>
+let all = computed(() => todos.value.length); 
+let allDone = computed({ 
+  get: function () { return active.value === 0; },
+  set: function (value) { todos.value.forEach((todo) => { todo.done = value; });}, });
+</script>
 
